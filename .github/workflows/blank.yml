@@ -17,5 +17,4 @@ jobs:
 
       - name: Debug
         run: |
-          docker push
-
+          echo Hi
