@@ -1,7 +1,21 @@
-name: Hello World
-on: [push]
+name: testytest
+on:
+  push:
+    branches: [ "main" ]
+    # paths: ['**/mgmt/**/*.hcl']
+
+  workflow_dispatch:
+
 jobs:
-  Hello-World-Job:
-    runs-on: codebuild-gh-test-${{ github.run_id }}-${{ github.run_attempt }}
+  tf-plan:
+    runs-on: codebuild-hamda-5ra-${{ github.run_id }}-${{ github.run_attempt }}
+    environment: approval
+    permissions: write-all
     steps:
-      - run: echo "Hello World!"
+      - name: Checks
+        uses: actions/checkout@v4
+
+      - name: Debug
+        run: |
+          docker push
+
